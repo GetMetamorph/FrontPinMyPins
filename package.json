@@ -1,0 +1,19 @@
+{
+  "name": "exercice-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asabbagh404/exercice-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Asabbagh404/exercice-nodejs/issues"
+  },
+  "homepage": "https://github.com/Asabbagh404/exercice-nodejs#readme"
+}
