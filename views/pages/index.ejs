@@ -37,10 +37,30 @@
         }
     });
 
+    window.addEventListener('keydown', () => {
+        console.log(document.querySelector('#input').value)
+        if(document.querySelector('#input').value !== '') {
+            socket.emit('typing')
+        } else {
+            socket.emit('untype')
+        }
+    })
+
     socket.on('chat message', function(msg) {
         var item = document.createElement('li');
         item.textContent = msg;
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
     });
+    socket.on('typing', () => {
+        if(!document.querySelector('.typing')) {
+            var item = document.createElement('li');
+            item.textContent = 'Someone is typing';
+            item.classList = 'typing'
+            messages.appendChild(item);
+        }
+    })
+    socket.on('untype', () => {
+        if(document.querySelector('.typing')) document.querySelector('.typing').remove();
+    })
 </script>

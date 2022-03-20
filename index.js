@@ -21,6 +21,14 @@ io.on('connection', (socket) => {
         console.log('message: ' + msg);
         io.emit('chat message', msg);
     });
+    socket.on('typing', (msg) => {
+        console.log('someone is typing');
+        io.emit('typing');
+    });
+    socket.on('untype', () => {
+        console.log('someone is untyping');
+        io.emit('untype');
+    });
 });
 
 server.listen(3000, () => {
