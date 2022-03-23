@@ -26,6 +26,7 @@ export default {
   async mounted() {
     this.$store.dispatch('getItems');
     this.itemsList = this.$store.state.itemsList;
+    console.log('itemList: ', this.itemsList);
     this.$socket.on('filtered_name', (data) => {
       this.itemsList = data;
     });
