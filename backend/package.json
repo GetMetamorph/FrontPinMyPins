@@ -1,14 +1,9 @@
 {
   "name": "exercice-nodejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "dev": "nodemon index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Asabbagh404/exercice-nodejs.git"
   },
   "author": "",
   "license": "ISC",
