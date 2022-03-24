@@ -11,15 +11,15 @@ export default new Vuex.Store({
   },
   mutations: {
     getItems(state, data) {
-      state.itemsList = JSON.parse(JSON.stringify(data));
+      console.log('data: ', data);
+      state.itemsList = data;
     },
   },
   actions: {
-    async getItems(context) {
-      const { data } = await axios.get(
-        'https://37b9-93-26-173-11.ngrok.io/v1/api/market/products',
-      );
-      context.commit('getItems', data);
+    getItems(context) {
+      axios.get('https://37b9-93-26-173-11.ngrok.io/v1/api/market/products').then((res) => {
+        context.commit('getItems', res.data);
+      });
     },
   },
 });
