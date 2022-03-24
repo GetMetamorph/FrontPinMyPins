@@ -51,10 +51,10 @@
       </v-card-actions>
     </template>
     <template v-else>
-      <v-progress-circular
+      <v-skeleton-loader
       indeterminate
       color="primary"
-    ></v-progress-circular> </template>
+    ></v-skeleton-loader></template>
   </v-card>
 </template>
 <script>
