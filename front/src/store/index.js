@@ -18,7 +18,7 @@ export default new Vuex.Store({
   },
   actions: {
     getItems(context) {
-      axios.get('https://d7d6-93-26-173-11.ngrok.io/v1/api/market/products').then((res) => {
+      axios.get('https://64fc-93-26-173-11.ngrok.io/v1/api/market/products').then((res) => {
         context.commit('getItems', res.data);
       });
     },

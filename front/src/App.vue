@@ -20,7 +20,11 @@
         />
 
         <span style="font: 1.5em 'Ubuntu', sans-serif;">Pin My Pin's</span>
-
+        <span><router-link to="./" style="color:white; margin-left: 1.5em;">
+        Home</router-link></span>
+        <span><router-link to="/addItem" style="color:white; margin-left: 1.5em;">
+        Add Item</router-link>
+        </span>
       </div>
 
       <v-spacer></v-spacer>

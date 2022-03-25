@@ -78,12 +78,16 @@
           </v-list-item>
             <v-row style="margin-top: 10px; margin-left: 10px">
               <v-checkbox class="chkbox-layout"
+                v-model="sortOrder"
                 label="Prix ASC"
                 value="price_asc"
+                v-on:change="sortItems()"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
+                v-model="sortOrder"
                 label="Prix DESC"
                 value="price_desc"
+                v-on:change="sortItems()"
               ></v-checkbox>
             </v-row>
         </v-list>
@@ -137,6 +141,14 @@ export default {
     Item,
   },
   methods: {
+    sortItems() {
+      const itemsList = this.itemsListFiltered || this.$store.state.itemsList;
+      if (this.sortOrder === 'price_asc') {
+        this.itemsListFiltered = itemsList.sort((a, b) => a - b);
+      } else if (this.sortOrder === 'price_desc') {
+        this.itemsListFiltered = itemsList.sort((a, b) => a + b);
+      }
+    },
     filterItems() {
       const itemsLists = this.$store.state.itemsList.slice();
       this.itemsListFiltered = itemsLists
@@ -154,6 +166,7 @@ export default {
       checkboxFilter: [],
       itemsListFiltered: [],
       filter: false,
+      sortOrder: '',
       nameFilter: '',
     };
   },
