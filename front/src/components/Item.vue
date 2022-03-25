@@ -45,6 +45,12 @@
           <div>{{ item.price }}</div>
         </v-card-text>
         <v-btn
+          color="red lighten-2"
+          text
+          @click="remove(item.id)"
+        >Remove
+        </v-btn>
+        <v-btn
           color="deep-purple lighten-2"
           text
           @click="buy(item.id)"
