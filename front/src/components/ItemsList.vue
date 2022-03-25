@@ -24,45 +24,37 @@
           <v-list-item>
             <v-container fluid id="sidebar-item">
               <v-row>
-              <p>{{ selected }}</p>
               <v-checkbox class="chkbox-layout"
-                v-model="activeCategories"
                 label="Red"
                 value="Red"
                 v-on:change="filterItems()"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
-                v-model="activeCategories"
                 label="Green"
                 value="Green"
                 v-on:change="filterItems()"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
-                v-model="activeCategories"
                 label="Blue"
                 value="Blue"
                 v-on:change="filterItems()"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
-                v-model="activeCategories"
                 label="Pink"
                 value="Pink"
                 v-on:change="filterItems()"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
-                v-model="activeCategories"
                 label="Disney"
                 value="Disney"
                 v-on:change="filterItems()"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
-                v-model="activeCategories"
                 label="Marvel"
                 value="Marvel"
                 v-on:change="filterItems()"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
-                v-model="activeCategories"
                 label="Pixar"
                 value="Pixar"
                 v-on:change="filterItems()"
@@ -78,14 +70,11 @@
           </v-list-item-title>
           </v-list-item>
             <v-row style="margin-top: 10px; margin-left: 10px">
-              <p>{{ selected }}</p>
               <v-checkbox class="chkbox-layout"
-                v-model="activeCategories"
                 label="Prix ASC"
                 value="price_asc"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
-                v-model="activeCategories"
                 label="Prix DESC"
                 value="price_desc"
               ></v-checkbox>
