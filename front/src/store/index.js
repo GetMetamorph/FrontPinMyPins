@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     isAdmin: false,
     itemsList: [],
+    itemsFilteredList: [],
   },
   mutations: {
     getItems(state, data) {
@@ -17,7 +18,7 @@ export default new Vuex.Store({
   },
   actions: {
     getItems(context) {
-      axios.get('https://c306-93-26-173-11.ngrok.io/v1/api/market/products').then((res) => {
+      axios.get('https://7c14-93-26-173-11.ngrok.io/v1/api/market/products').then((res) => {
         context.commit('getItems', res.data);
       });
     },

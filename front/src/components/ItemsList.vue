@@ -25,36 +25,43 @@
             <v-container fluid id="sidebar-item">
               <v-row>
               <v-checkbox class="chkbox-layout"
+                v-model="checkboxFilter"
                 label="Red"
-                value="Red"
+                value="red"
                 v-on:change="filterItems()"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
+                v-model="checkboxFilter"
                 label="Green"
-                value="Green"
+                value="green"
                 v-on:change="filterItems()"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
+                v-model="checkboxFilter"
                 label="Blue"
-                value="Blue"
+                value="blue"
                 v-on:change="filterItems()"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
+                v-model="checkboxFilter"
                 label="Pink"
-                value="Pink"
+                value="pink"
                 v-on:change="filterItems()"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
+                v-model="checkboxFilter"
                 label="Disney"
                 value="Disney"
                 v-on:change="filterItems()"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
+                v-model="checkboxFilter"
                 label="Marvel"
                 value="Marvel"
                 v-on:change="filterItems()"
               ></v-checkbox>
               <v-checkbox  class="chkbox-layout"
+                v-model="checkboxFilter"
                 label="Pixar"
                 value="Pixar"
                 v-on:change="filterItems()"
@@ -91,11 +98,20 @@
         </v-col>
       </v-row>
       <div v-if="itemsList.length > 0">
-        <v-row>
-          <v-col v-for="(item, index) in itemsList" :key="index" lg="4" sm="6">
-            <item :item="item" />
-          </v-col>
-        </v-row>
+          <div v-if="itemsListFiltered.length === 0">
+            <v-row>
+              <v-col v-for="(item, index) in itemsList" :key="index" lg="4" sm="6">
+                <item :item="item" />
+              </v-col>
+            </v-row>
+          </div>
+          <div v-else>
+            <v-row>
+              <v-col v-for="(item, index) in itemsListFiltered" :key="index" lg="4" sm="6">
+                <item :item="item" />
+              </v-col>
+            </v-row>
+          </div>
       </div>
     </v-container>
   </div>
@@ -108,7 +124,6 @@ export default {
   name: 'ItemsList',
   async mounted() {
     await this.$store.dispatch('getItems');
-    console.log('itemList: ', this.$store.state.itemsList);
     this.$socket.on('filtered_name', (data) => {
       this.itemsList = data;
     });
@@ -123,7 +138,10 @@ export default {
   },
   methods: {
     filterItems() {
-      return console.log('test');
+      const itemsLists = this.$store.state.itemsList.slice();
+      this.itemsListFiltered = itemsLists
+        .filter((item) => this.checkboxFilter.indexOf(item.color) !== -1
+      || this.checkboxFilter.indexOf(item.license) !== -1);
     },
   },
   watch: {
@@ -133,7 +151,9 @@ export default {
   },
   data() {
     return {
-      selected: true,
+      checkboxFilter: [],
+      itemsListFiltered: [],
+      filter: false,
       nameFilter: '',
     };
   },
