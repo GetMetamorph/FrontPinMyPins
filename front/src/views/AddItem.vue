@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     sendData() {
-      axios.post('https://c839-93-26-173-11.ngrok.io/v1/api/market/products', {
+      axios.post('https://d7d6-93-26-173-11.ngrok.io/v1/api/market/products', {
         title: this.title,
         description: this.description,
       });

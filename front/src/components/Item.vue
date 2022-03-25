@@ -26,7 +26,7 @@
 
       <v-divider class="mx-4"></v-divider>
 
-      <v-card-title>Attributes</v-card-title>
+      <v-card-text>Tag: {{ item.license }} , {{ item.color }}</v-card-text>
 
       <v-card-text>
         <v-chip-group
@@ -41,6 +41,9 @@
       </v-card-text>
 
       <v-card-actions class="justify-end">
+        <v-card-text>
+          <div>{{ item.price }}</div>
+        </v-card-text>
         <v-btn
           color="deep-purple lighten-2"
           text
