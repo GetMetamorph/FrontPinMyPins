@@ -48,7 +48,7 @@
 
       <v-card-actions class="justify-end">
         <v-card-text>
-          <div>{{ item.price }}</div>
+          <div>price : {{ item.price }} €</div>
         </v-card-text>
         <v-btn
           color="deep-purple lighten-2"

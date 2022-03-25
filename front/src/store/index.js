@@ -84,44 +84,44 @@ export default new Vuex.Store({
     // _________________________________________________________________________________________
     // Products
     getItems(context) {
-      axios.get('https://855b-93-26-173-11.ngrok.io/v1/api/market/products').then((res) => {
+      axios.get('https://d8a9-93-26-173-11.ngrok.io/v1/api/market/products').then((res) => {
         context.commit('getItems', res.data);
       });
     },
     postItems(context, data) {
-      axios.post('http://localhost:56996/v1/api/market/products', data).then((res) => {
+      axios.post('https://d8a9-93-26-173-11.ngrok.io/v1/api/market/products', data).then((res) => {
         context.commit('postItems', res.status, data);
       });
     },
     putItem(context, id, data) {
-      axios.put(`http://localhost:56996/v1/api/market/product/${id}`, data).then((res) => {
+      axios.put(`https://d8a9-93-26-173-11.ngrok.io/v1/api/market/product/${id}`, data).then((res) => {
         context.commit('putItem', res.status, data);
       });
     },
     deleteItem(context, id) {
-      axios.delete(`http://localhost:56996/v1/api/market/product/${id}`).then((res) => {
+      axios.delete(`https://d8a9-93-26-173-11.ngrok.io/v1/api/market/product/${id}`).then((res) => {
         context.commit('deleteItem', res.status, id);
       });
     },
     // _________________________________________________________________________________________
     // Users
     getUsers(context) {
-      axios.get('http://localhost:56996/v1/api/market/users').then((res) => {
+      axios.get('https://d8a9-93-26-173-11.ngrok.io/v1/api/market/users').then((res) => {
         context.commit('getUsers', res.data);
       });
     },
     postUsers(context, data) {
-      axios.post('http://localhost:56996/v1/api/market/users', data).then((res) => {
+      axios.post('https://d8a9-93-26-173-11.ngrok.io/v1/api/market/users', data).then((res) => {
         context.commit('postUsers', res.status, data);
       });
     },
     putUser(context, id, data) {
-      axios.put(`http://localhost:56996/v1/api/market/user/${id}`, data).then((res) => {
+      axios.put(`https://d8a9-93-26-173-11.ngrok.io/v1/api/market/user/${id}`, data).then((res) => {
         context.commit('putUser', res.status, data);
       });
     },
     deleteUser(context, id) {
-      axios.delete(`http://localhost:56996/v1/api/market/user/${id}`).then((res) => {
+      axios.delete(`https://d8a9-93-26-173-11.ngrok.io/v1/api/market/user/${id}`).then((res) => {
         context.commit('deleteUser', res.status, id);
       });
     },
