@@ -78,7 +78,7 @@
                 label="Prix DESC"
                 value="price_desc"
               ></v-checkbox>
-              </v-row>
+            </v-row>
         </v-list>
       </v-navigation-drawer>
     </v-card>
@@ -133,6 +133,7 @@ export default {
   },
   data() {
     return {
+      selected: true,
       nameFilter: '',
     };
   },
