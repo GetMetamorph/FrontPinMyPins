@@ -86,7 +86,7 @@ export default {
         color: this.color,
         image: this.image,
         license: this.license,
-        price: `${this.price} $`,
+        price: this.price,
         stock: this.stock,
       }]);
     },

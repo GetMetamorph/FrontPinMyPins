@@ -84,7 +84,7 @@ export default new Vuex.Store({
     // _________________________________________________________________________________________
     // Products
     getItems(context) {
-      axios.get('http://localhost:56996/v1/api/market/products').then((res) => {
+      axios.get('https://855b-93-26-173-11.ngrok.io/v1/api/market/products').then((res) => {
         context.commit('getItems', res.data);
       });
     },
