@@ -51,7 +51,7 @@
           rounded
           color="red lighten-2"
           text
-          @click="remove(item._id)"
+          @click="deleteItem(item._id)"
         >Remove
       </v-btn>
     </v-card-actions>
@@ -71,6 +71,7 @@
   </v-card>
 </template>
 <script>
+
 export default {
   name: 'ItemDetail',
   async mounted() {
@@ -88,6 +89,11 @@ export default {
     },
     remove(id) {
       alert(`You removed the product with id: ${id}`);
+    },
+    deleteItem(id) {
+      this.$store.dispatch('deleteItem', id).then((path) => {
+        this.$router.redirect(path);
+      });
     },
   },
 };

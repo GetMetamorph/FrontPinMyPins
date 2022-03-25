@@ -31,11 +31,7 @@ export default new Vuex.Store({
       }
       state.itemsList = [...state.itemsList, data];
     },
-    deleteItem(state, status, id) {
-      if (status !== 200) {
-        console.log("error: bad API response (can't remove product from store)");
-        return;
-      }
+    deleteItem(state, id) {
       for (let i = 0; i < state.itemsList.length; i + 1) {
         // eslint-disable-next-line
         if (state.itemsList[i]._id === id) {
@@ -43,7 +39,6 @@ export default new Vuex.Store({
           return;
         }
       }
-      console.log("error: can't find product in store (unable to remove)");
     },
     // _________________________________________________________________________________________
     // Users
@@ -99,8 +94,14 @@ export default new Vuex.Store({
       });
     },
     deleteItem(context, id) {
-      axios.delete(`https://d8a9-93-26-173-11.ngrok.io/v1/api/market/product/${id}`).then((res) => {
-        context.commit('deleteItem', res.status, id);
+      return new Promise((resolve, reject) => {
+        axios.delete(`https://d8a9-93-26-173-11.ngrok.io/v1/api/market/product/${id}`).then(() => {
+          context.commit('deleteItem', id);
+          resolve('/');
+        })
+          .catch((error) => {
+            reject(error);
+          });
       });
     },
     // _________________________________________________________________________________________
