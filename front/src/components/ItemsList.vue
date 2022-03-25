@@ -128,13 +128,10 @@ export default {
   name: 'ItemsList',
   async mounted() {
     await this.$store.dispatch('getItems');
-    this.$socket.on('filtered_name', (data) => {
-      this.itemsList = data;
-    });
   },
   computed: {
     itemsList() {
-      return this.$store.state.itemsList || [];
+      return this.$store.state.itemsList;
     },
   },
   components: {
@@ -154,11 +151,6 @@ export default {
       this.itemsListFiltered = itemsLists
         .filter((item) => this.checkboxFilter.indexOf(item.color) !== -1
       || this.checkboxFilter.indexOf(item.license) !== -1);
-    },
-  },
-  watch: {
-    nameFilter(val) {
-      this.$socket.emit('filtername_change', val);
     },
   },
   data() {

@@ -54,18 +54,16 @@
     <v-row>
       <v-col>
         <v-text-field label="Quantity"
-        v-model="quantity"
+        v-model="stock"
         single-line
         type="number"></v-text-field>
       </v-col>
     </v-row>
-    <v-btn color="primary" x-large class="mx-auto d-block mt-5" @click="sendData">Send</v-btn>
+    <v-btn color="primary" x-large class="mx-auto d-block mt-5" @click="sendData()">Send</v-btn>
   </v-container>
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
   data() {
     return {
@@ -77,19 +75,19 @@ export default {
       image: '',
       license: '',
       price: '',
-      quantity: '',
+      stock: '',
     };
   },
   methods: {
     async sendData() {
-      await axios.post('https://3427-93-26-173-11.ngrok.io/v1/api/market/products', [{
+      await this.$store.dispatch('postItems', [{
         name: this.name,
         description: this.description,
         color: this.color,
         image: this.image,
         license: this.license,
-        price: this.price,
-        quantity: this.quantity,
+        price: `${this.price} $`,
+        stock: this.stock,
       }]);
     },
   },

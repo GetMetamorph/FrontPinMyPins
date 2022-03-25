@@ -13,20 +13,14 @@ const routes = [
     component: HomeView,
   },
   {
-    path: '/additem',
+    path: '/add-item',
     name: 'addItem',
     component: AddItem,
   },
   {
-    path: '/detailitem',
-    name: 'detailitem',
+    path: '/detail-item/:id',
+    name: 'detailItem',
     component: ItemDetailView,
-    children: [
-      {
-        path: '/:id',
-        component: ItemDetailView,
-      },
-    ],
   },
 ];
 

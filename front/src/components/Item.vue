@@ -1,10 +1,9 @@
 <template>
   <v-card
-    :loading="isLoading"
     class="mx-auto my-12"
     max-width="374"
   >
-    <template v-if="!isLoading">
+    <template>
       <template slot="progress">
         <v-progress-linear
           color="deep-purple"
@@ -18,7 +17,11 @@
         src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
       ></v-img>
 
-      <v-card-title>{{ item.name }}</v-card-title>
+      <v-card-title>
+        <router-link :to="`/detail-item/${item._id}`">
+          {{ item.name }}
+        </router-link>
+      </v-card-title>
 
       <v-card-text>
         <div>{{ item.description }}</div>
@@ -26,7 +29,10 @@
 
       <v-divider class="mx-4"></v-divider>
 
-      <v-card-text>Tag: {{ item.license }} , {{ item.color }}</v-card-text>
+      <v-card-text>Tags:
+        <v-chip class="ma-1" color="primary" outlined>{{ item.license }}</v-chip>
+        <v-chip class="ma-1" color="primary" outlined>{{ item.color }}</v-chip>
+      </v-card-text>
 
       <v-card-text>
         <v-chip-group
@@ -45,25 +51,14 @@
           <div>{{ item.price }}</div>
         </v-card-text>
         <v-btn
-          color="red lighten-2"
-          text
-          @click="remove(item.id)"
-        >Remove
-        </v-btn>
-        <v-btn
           color="deep-purple lighten-2"
           text
-          @click="buy(item.id)"
+          @click="buy(item.name)"
         >
           <v-icon size="32" color="teal lighten-2">mdi-cart</v-icon>
         </v-btn>
       </v-card-actions>
     </template>
-    <template v-else>
-      <v-skeleton-loader
-      indeterminate
-      color="primary"
-    ></v-skeleton-loader></template>
   </v-card>
 </template>
 <script>
@@ -75,19 +70,9 @@ export default {
       required: true,
     },
   },
-  mounted() {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000);
-  },
-  data() {
-    return {
-      isLoading: true,
-    };
-  },
   methods: {
-    buy(id) {
-      console.log(`You bought the product ${id}`);
+    buy(name) {
+      alert(`You bought the product ${name}`);
     },
   },
 };

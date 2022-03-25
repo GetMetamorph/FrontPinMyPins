@@ -11,12 +11,20 @@
     <v-list-item four-line>
       <v-list-item-content>
         <v-list-item-title class="text-h5 mb-1">
-          Article
+          {{ item.name }}
         </v-list-item-title>
-        <v-list-item-subtitle>Description</v-list-item-subtitle>
+        <v-list-item-subtitle>Description:</v-list-item-subtitle>
         <v-card-text>
-        <div>pazojefzjoefojgp$aej$porgj</div>
-      </v-card-text>
+          <div>{{ item.description }}</div>
+        </v-card-text>
+        <v-list-item-subtitle>Tags:</v-list-item-subtitle>
+        <v-card-text>
+          <div>{{ item.license }}, {{ item.color }}</div>
+        </v-card-text>
+        <v-list-item-subtitle>Price:</v-list-item-subtitle>
+        <v-card-text>
+          <div>{{ item.price }}</div>
+        </v-card-text>
       </v-list-item-content>
       <v-img
         max-height="250"
@@ -34,45 +42,53 @@
         outlined
         rounded
         text
+        @click="buy()"
       >
-        Acheter
+        Buy
+      </v-btn>
+        <v-btn
+          outlined
+          rounded
+          color="red lighten-2"
+          text
+          @click="remove(item._id)"
+        >Remove
       </v-btn>
     </v-card-actions>
     <v-list-item four-line
     class="bottom">
       <v-card-text>
-        <div>Nombre de client consultant l'article :</div>
+        Number of watchers for this article:
       </v-card-text>
       <v-card-text
         fixed
         right
         class="bottom"
       >
-        <div>Quantité restante :</div>
-        <item></item>
+        Available quantity: {{ item.stock }}
       </v-card-text>
     </v-list-item>
   </v-card>
 </template>
 <script>
-import Item from './Item.vue';
-
 export default {
   name: 'ItemDetail',
   async mounted() {
     await this.$store.dispatch('getItems');
-    console.log('ItemDetail: ', this.$store.state.ItemDetail);
-    this.$socket.on('filtered_name', (data) => {
-      this.ItemDetail = data;
-    });
   },
   computed: {
-    ItemDetail() {
-      return this.$store.state.ItemDetail || [];
+    item() {
+      // eslint-disable-next-line
+      return this.$store.state.itemsList.find((item) => item._id === this.$route.params.id);
     },
   },
-  components: {
-    Item,
+  methods: {
+    buy() {
+      alert(`You bought the product ${this.item.name}`);
+    },
+    remove(id) {
+      alert(`You removed the product with id: ${id}`);
+    },
   },
 };
 </script>
